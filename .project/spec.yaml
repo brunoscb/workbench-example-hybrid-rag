@@ -77,7 +77,7 @@ execution:
       proxy:
         trim_prefix: true
       url: http://localhost:8080/
-  - name: jupyterlab
+  - name: JupyterLab
     type: jupyterlab
     class: webapp
     start_command: jupyter lab --allow-root --port 8888 --ip 0.0.0.0 --no-browser
@@ -100,10 +100,12 @@ execution:
   resources:
     gpu:
       requested: 1
-    sharedMemoryMB: 4096
+    sharedMemoryMB: 64000
   secrets:
   - variable: NVCF_RUN_KEY
     description: NVCF Run Key for Cloud Inference
+  - variable: HUGGING_FACE_HUB_TOKEN
+    description: HF Token for cloning model weights locally
   mounts:
   - type: project
     target: /project/
